@@ -14,6 +14,7 @@ export class ContactController {
 
   @Post('sendEmail')
   sendEmail(@Body() createContactDto:CreateContactDto){
+    console.log("Entro a enviar", createContactDto)
     return this.contactService.sendContactEmail(createContactDto);
   }
 
