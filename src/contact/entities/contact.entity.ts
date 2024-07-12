@@ -18,12 +18,6 @@ export class Contact extends Document{
     @Prop({required:true})
     comentario: string;
 
-    // @Prop(raw([{
-    //     name:{type:String},
-    //     value:{type:Number},
-    //     status:{type:Boolean}
-    // }]))
-    // data:any[];
 }
 export const ContactSchema = SchemaFactory.createForClass(Contact);
  

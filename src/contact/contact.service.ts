@@ -6,7 +6,7 @@ import * as nodemailer from 'nodemailer';
 export class ContactService {
   create(createContactDto: CreateContactDto) {
     return createContactDto
-    //throw new Error('Method not implemented.');
+    
   }
   async sendContactEmail(createContactDto: CreateContactDto) {
     console.log(createContactDto)
