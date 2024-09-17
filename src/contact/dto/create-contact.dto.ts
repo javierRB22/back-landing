@@ -1,5 +1,3 @@
-
-
 import { IsEmail, IsNotEmpty, IsString, MinLength, IsInt, Min } from 'class-validator';
 
 export class CreateContactDto {
@@ -16,10 +14,14 @@ export class CreateContactDto {
   @Min(1, { message: 'El teléfono debe ser mayor que 0' })
   telefono: number;
 
-  @IsInt()
-  @Min(1, { message: 'La cédula debe ser mayor que 0' })
-  cedula: number;
+  @IsString()
+  @IsNotEmpty({ message: 'El documento es requerido' })
+  documento: string; 
 
+  @IsInt()
+  @Min(1, { message: 'El numero debe ser mayor que 0' })
+  identificacion: number;
+  
   @IsString()
   @IsNotEmpty({ message: 'El lugar es requerido' })
   @MinLength(6, { message: 'El lugar debe tener al menos 6 caracteres' })
@@ -29,4 +31,8 @@ export class CreateContactDto {
   @IsNotEmpty({ message: 'El comentario es requerido' })
   @MinLength(6, { message: 'El comentario debe tener al menos 6 caracteres' })
   comentario: string;
+
+  @IsString()
+  @IsNotEmpty({ message: 'La línea es requerida' })
+  linea: string; 
 }

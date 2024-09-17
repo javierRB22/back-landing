@@ -5,24 +5,41 @@ import * as nodemailer from 'nodemailer';
 @Injectable()
 export class ContactService {
   create(createContactDto: CreateContactDto) {
-    return createContactDto
-    
+    return createContactDto;
   }
   async sendContactEmail(createContactDto: CreateContactDto) {
-    console.log(createContactDto)
+    console.log(createContactDto);
+
+    let sendEmail = '';
+
+    if (createContactDto.linea === 'ferreteria') {
+      sendEmail = ' cgutierrez@marpico.com.co';
+    }
+    if (createContactDto.linea === 'promocionales') {
+      sendEmail = 'asistentedeventas@marpicopromocionales.com';
+    }
+    if (createContactDto.linea === 'vinos-licores') {
+      sendEmail = 'cdeolaya@marpico.com.co';
+    }
+
     const transporter = nodemailer.createTransport({
-      service: 'gmail', 
+      host: 'smtp.office365.com',
+      secureConnection: false,
+      port: '587',
       auth: {
-        user: 'marpicoPrueba@gmail.com',
-        pass: 'otfqgcofblxbtany',
+        user: 'noreply@marpico.co',
+        pass: 'M4rp1c0,2021%',
+      },
+      tls: {
+        ciphers: 'SSLv3',
       },
     });
 
     const mailOptions = {
-      from: `${createContactDto.email}`,
-      to: 'javierbaquero513@gmail.com',
+      from: 'Marpico Promocionales <noreply@marpico.co>',
+      to: `jeramirez@marpico.com.co, ${sendEmail}`,
       subject: 'Nuevo mensaje de contacto',
-    html:`
+      html: `
 
     <!DOCTYPE html>
 <html xml:lang="en" lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office">
@@ -308,7 +325,7 @@ margin-left: -25px !important;
   <body id="body" class="darkmode2 body" bgcolor="#EDEEEF" style="background-color:#EDEEEF;">
     <div role="article" aria-roledescription="email" aria-label="Email from Your Company" xml:lang="en" lang="en">
       <!--hidden preheader with pre-header spacer hack-->
-      <div class="litmus-builder-preview-text" style="display:none;">Log in to your Litmus account to check your ESP integration settings. &#847;&zwnj;&nbsp;&#8199;&shy;&#847;&zwnj;&nbsp;&#8199;&shy;&#847;&zwnj;&nbsp;&#8199;&shy;&#847;&zwnj;&nbsp;&#8199;&shy;&#847;&zwnj;&nbsp;&#8199;&shy;&#847;&zwnj;&nbsp;&#8199;&shy;&#847;&zwnj;&nbsp;&#8199;&shy;&#847;&zwnj;&nbsp;&#8199;&shy;&#847;&zwnj;&nbsp;&#8199;&shy;&#847;&zwnj;&nbsp;&#8199;&shy;&#847;&zwnj;&nbsp;&#8199;&shy;&#847;&zwnj;&nbsp;&#8199;&shy;&#847;&zwnj;&nbsp;&#8199;&shy;&#847;&zwnj;&nbsp;&#8199;&shy;&#847;&zwnj;&nbsp;&#8199;&shy;&#847;&zwnj;&nbsp;&#8199;&shy;&#847;&zwnj;&nbsp;&#8199;&shy;&#847;&zwnj;&nbsp;&#8199;&shy;&#847;&zwnj;&nbsp;&#8199;&shy;&#847;&zwnj;&nbsp;&#8199;&shy;&#847;&zwnj;&nbsp;&#8199;&shy;&#847;&zwnj;&nbsp;&#8199;&shy;&#847;&zwnj;&nbsp;&#8199;&shy;&#847;&zwnj;&nbsp;&#8199;&shy;&#847;&zwnj;&nbsp;&#8199;&shy;&#847;&zwnj;&nbsp;&#8199;&shy;&#847;&zwnj;&nbsp;&#8199;&shy;&#847;&zwnj;&nbsp;&#8199;&shy;&#847;&zwnj;&nbsp;&#8199;&shy;&#847;&zwnj;&nbsp;&#8199;&shy;&#847;&zwnj;&nbsp;&#8199;&shy;&#847;&zwnj;&nbsp;&#8199;&shy;&#847;&zwnj;&nbsp;&#8199;&shy;&#847;&zwnj;&nbsp;&#8199;&shy;&#847;&zwnj;&nbsp;&#8199;&shy;&#847;&zwnj;&nbsp;&#8199;&shy;&#847;&zwnj;&nbsp;&#8199;&shy;&#847;&zwnj;&nbsp;&#8199;&shy;&#847;&zwnj;&nbsp;&#8199;&shy;&#847;&zwnj;&nbsp;&#8199;&shy;&#847;&zwnj;&nbsp;&#8199;&shy;&#847;&zwnj;&nbsp;&#8199;&shy;&#847;&zwnj;&nbsp;&#8199;&shy;&#847;&zwnj;&nbsp;&#8199;&shy;&#847;&zwnj;&nbsp;&#8199;&shy;&#847;&zwnj;&nbsp;&#8199;&shy;&#847;&zwnj;&nbsp;&#8199;&shy;&#847;&zwnj;&nbsp;&#8199;&shy;&#847;&zwnj;&nbsp;&#8199;&shy;&#847;&zwnj;&nbsp;&#8199;&shy;&#847;&zwnj;&nbsp;&#8199;&shy;&#847;&zwnj;&nbsp;&#8199;&shy;&#847;&zwnj;&nbsp;&#8199;&shy;&#847;&zwnj;&nbsp;&#8199;&shy;&#847;&zwnj;&nbsp;&#8199;&shy;&#847;&zwnj;&nbsp;&#8199;&shy;&#847;&zwnj;&nbsp;&#8199;&shy;&#847;&zwnj;&nbsp;&#8199;&shy;&#847;&zwnj;&nbsp;&#8199;&shy;&#847;&zwnj;&nbsp;&#8199;&shy;&#847;&zwnj;&nbsp;&#8199;&shy;&#847;&zwnj;&nbsp;&#8199;&shy;&#847;&zwnj;&nbsp;&#8199;&shy;&#847;&zwnj;&nbsp;&#8199;&shy;&#847;&zwnj;&nbsp;&#8199;&shy;&#847;&zwnj;&nbsp;&#8199;&shy;&#847;&zwnj;&nbsp;&#8199;&shy;&#847;&zwnj;&nbsp;&#8199;&shy;&#847;&zwnj;&nbsp;&#8199;&shy;&#847;&zwnj;&nbsp;&#8199;&shy;&#847;&zwnj;&nbsp;&#8199;&shy;&#847;&zwnj;&nbsp;&#8199;&shy;&#847;&zwnj;&nbsp;&#8199;&shy;&#847;&zwnj;&nbsp;&#8199;&shy;&#847;&zwnj;&nbsp;&#8199;&shy;&#847;&zwnj;&nbsp;&#8199;&shy;&#847;&zwnj;&nbsp;&#8199;&shy;&#847;&zwnj;&nbsp;&#8199;&shy;&#847;&zwnj;&nbsp;&#8199;&shy;&#847;&zwnj;&nbsp;&#8199;&shy;&#847;&zwnj;&nbsp;&#8199;&shy;&#847;&zwnj;&nbsp;&#8199;&shy;&#847;&zwnj;&nbsp;&#8199;&shy;&#847;&zwnj;&nbsp;&#8199;&shy;&#847;&zwnj;&nbsp;&#8199;&shy;&#847;&zwnj;&nbsp;&#8199;&shy;&#847;&zwnj;&nbsp;&#8199;&shy;&#847;&zwnj;&nbsp;&#8199;&shy;&#847;&zwnj;&nbsp;&#8199;&shy;&#847;&zwnj;&nbsp;&#8199;&shy;&#847;&zwnj;&nbsp;&#8199;&shy;&#847;&zwnj;&nbsp;&#8199;&shy;&#847;&zwnj;&nbsp;&#8199;&shy;&#847;&zwnj;&nbsp;&#8199;&shy;&#847;&zwnj;&nbsp;&#8199;&shy;&#847;&zwnj;&nbsp;&#8199;&shy;&#847;&zwnj;&nbsp;&#8199;&shy;&#847;&zwnj;&nbsp;&#8199;&shy;&#847;&zwnj;&nbsp;&#8199;&shy;&#847;&zwnj;&nbsp;&#8199;&shy;&#847;&zwnj;&nbsp;&#8199;&shy;&#847;&zwnj;&nbsp;&#8199;&shy;&#847;&zwnj;&nbsp;&#8199;&shy;&#847;&zwnj;&nbsp;&#8199;&shy;&#847;&zwnj;&nbsp;&#8199;&shy;&#847;&zwnj;&nbsp;&#8199;&shy;&#847;&zwnj;&nbsp;&#8199;&shy;&#847;&zwnj;&nbsp;&#8199;&shy;&#847;&zwnj;&nbsp;&#8199;&shy;&#847;&zwnj;&nbsp;&#8199;&shy;&#847;&zwnj;&nbsp;&#8199;&shy;&#847;&zwnj;&nbsp;&#8199;&shy;&#847;&zwnj;&nbsp;&#8199;&shy;&#847;&zwnj;&nbsp;&#8199;&shy;&#847;&zwnj;&nbsp;&#8199;&shy;&#847;&zwnj;&nbsp;&#8199;&shy;&#847;&zwnj;&nbsp;&#8199;&shy;&#847;&zwnj;&nbsp;&#8199;&shy;&#847;&zwnj;&nbsp;&#8199;&shy;&#847;&zwnj;&nbsp;&#8199;&shy;&#847;&zwnj;&nbsp;&#8199;&shy;&#847;&zwnj;&nbsp;&#8199;&shy;&#847;&zwnj;&nbsp;&#8199;&shy;&#847;&zwnj;&nbsp;&#8199;&shy;&#847;&zwnj;&nbsp;&#8199;&shy;&#847;&zwnj;&nbsp;&#8199;&shy;&#847;&zwnj;&nbsp;&#8199;&shy;&#847;&zwnj;&nbsp;&#8199;&shy;&#847;&zwnj;&nbsp;&#8199;&shy;</div>
+      <div class="litmus-builder-preview-text" style="display:none;">Correo de contacto Marpico S.A.S</div>
       <!--start of email-->
       <table class="darkmode2" cellpadding="0" cellspacing="0" border="0" role="presentation" style="width:100%; background-color: #f8f9fc;">
         <tr>
@@ -319,12 +336,14 @@ margin-left: -25px !important;
                   <!--Header with logo-->
 
                   <!--light mode logo-->
-                  <a href="https://www.example.com/{{utm_code}}" target="_blank">
-                    <img src="logo-dark.png" width="168" height="78" alt="wonderblum" style="color: #4a4a4a; text-align:center; font-weight:bold; font-size:24px; line-height:28px;" border="0" />
+                  <a href="https://marpicopromocionales.com/#/" target="_blank">
+                    <img src="https://marpicostorage.blob.core.windows.net/media/marpico_site/logos/logo-hor_blanco.png
+                     " width="168" alt="MARPICO S.A.S" style="color: #4a4a4a; text-align:center; font-weight:bold; font-size:24px; line-height:28px;" border="0" />
                   </a>
                 </td>
               </tr>
             </table>
+
           </td>
         </tr>
         <tr>
@@ -336,7 +355,7 @@ margin-left: -25px !important;
                     <tr>
                       <td align="center" valign="top" style="padding: 60px 30px 0;">
                         <!--h1-->
-                        <h1><a href="https://www.example.com/" style="color:#0a080b;">Datos Contacto</a></h1>
+                        <h1 style="color:#0a080b;">Datos Contacto</h1>
                       </td>
                     </tr>
 
@@ -346,13 +365,10 @@ margin-left: -25px !important;
                           <!--Paragraph block-->
                           <p style="text-align: left;">Nombre: ${createContactDto.name}</p>
                            <p style="text-align: left;">Correo: ${createContactDto.email}</p>
-
-                          <p style="text-align: left;">Cedula: ${createContactDto.cedula}</p>
-
+                          <p style="text-align: left;">Tipo de documento: ${createContactDto.documento}</p>
+                          <p style="text-align: left;">Numero de documento: ${createContactDto.identificacion}</p>
                            <p style="text-align: left;">Telefono: ${createContactDto.telefono}</p>
-
                            <p style="text-align: left;">Lugar: ${createContactDto.lugar}</p>
-
                           <p style="text-align: left;">Comentario: ${createContactDto.comentario}</p>
 
                         </div>
@@ -379,11 +395,9 @@ margin-left: -25px !important;
                   <td class="footer" align="center" valign="top" style="padding:50px 30px;">
                     <!--Footer-->
                     <p style="margin:0 auto 20px;">
-                      You&rsquo;re receiving this email because you have an account with us.
+                      La persona de contacto desea saber mas acerca de nosotros 
                     </p>
-                    <p style="mso-line-height-rule:exactly;margin-bottom:20px;">Any address information, legal, terms etc to be added here<br><br>
-                      <a href="https://example.com/{{utm_code}}" class="link" target="_blank" style="color: #0a080b; text-decoration: underline;">Email Preferences</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href="https://example.com/{{utm_code}}" class="link" target="_blank" style="color: #0a080b; text-decoration: underline;">Unsubscribe</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href="https://example.com/{{utm_code}}" class="link" target="_blank" style="color: #0a080b; text-decoration: underline;">View Online</a>
-                    </p>
+                    
                   </td>
                 </tr>
               </table>
@@ -398,12 +412,11 @@ margin-left: -25px !important;
 </html>
 
 
-    `
+    `,
     };
     try {
-
       const result = await transporter.sendMail(mailOptions);
-      console.log(result)
+      console.log(result);
       return { success: true, result };
     } catch (error) {
       return { success: false, error };
